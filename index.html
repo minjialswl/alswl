@@ -67,7 +67,7 @@
     #work-display img {
       width: 80vw;   /* 화면 너비(Viewport Width)의 100% */
       height: auto; /* 비율 유지 */
-      display: none;
+      display: flex;
       border: none;
     }
     
@@ -105,6 +105,10 @@
     @media (max-width: 1080px) {
       body, .menu, .top-left, .works-list, #work-caption, .email {
         font-size: 25px;
+      }
+      .work-display img {
+        flex-direction: column; /* 목록 아래로 이미지 표시 */
+        width: 100%; /* 화면 폭 전체에 맞춤 */
       }
     }
    </style> 
