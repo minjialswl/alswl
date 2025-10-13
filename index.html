@@ -1,56 +1,115 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
+<!DOCTYPE html> 
+<html lang="ko"> 
+<head> 
+  <meta charset="UTF-8"> 
   <title>민지 Jung Minji</title>
-  <style>
-    body {
+  <style> 
+    body { 
       font-family: dotum, sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      color: #000;
-      margin: 20px;
-      margin-top: 30px;
-    }
-
-    /* 오른쪽 상단 타이틀 */
-    .top-left {
-      text-align: left;
-      font-size: 14px; /* 본문 글자 크기와 같게 */
-      margin-bottom: 10px;
-    }
-
-    /* 목록 */
-    .menu {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      font-size: 14px; /* 본문 글자 크기와 같게 */
-      margin-left: 20px;
-    }
-
-    .menu a {
+      font-style: normal; 
+      font-weight: 400; 
+      color: #000; 
+      margin: 20px; 
+      margin-top: 30px; 
+    } 
+    
+    /* 오른쪽 상단 타이틀 */ 
+    .top-left { 
+      text-align: left; 
+      font-size: 14px; /* 본문 글자 크기와 같게 */ 
+      margin-bottom: 10px; 
+    } 
+    
+    /* 목록 */ 
+    .menu { 
+      text-align: left; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0px; 
+      font-size: 14px; /* 본문 글자 크기와 같게 */ 
+      margin-left: 0px; 
+    } 
+    
+    .menu a { 
+      text-decoration: line-through; 
+      color: #000; 
+    } 
+    
+    .menu a:hover { 
+      text-decoration: none; 
+      color: #000; /* 선택시 색상 변화 */ 
+    } 
+    
+    .works-list { 
+      max-height: 0; /* 숨겨진 상태 */ 
+      overflow: hidden; /* 넘치는 내용 숨김 */ 
+      margin-top: 0px;
+      margin-left: 15px; 
+      font-size: 14px; 
+      line-height: 1.1; 
+      transition: max-height 20s ease; /* 부드럽게 열리도록 */ 
+    } 
+    
+    .works-list.show { 
+      max-height: 500px; /* 충분히 큰 값, 목록이 완전히 보이도록 */ 
+    } 
+    
+    /* works 토글 열렸을 때 장식 제거 */
+    #works-toggle.open {
       text-decoration: none;
-      color: #000;
     }
-
-    .menu a:hover {
-      color: #9d9d9d; /* 선택시 색상 변화 */
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 타이틀 -->
-  <div class="top-left">민지 Jung Minji</div>
-
-  <!-- 목록 -->
-  <div class="menu">
-    <a href="works.html">작업들 works</a>
-    <a href="images.html">이미지들 images</a>
-    <a href="notes.html">글들 notes</a>
-  </div>
-
-</body>
+    
+    /* 이메일 */ 
+    .email { 
+      position: fixed; 
+      bottom: 20px; /* 화면 아래에서 20px 위 */ 
+      right: 40px; /* 왼쪽 여백 맞추기 */ 
+      font-size: 14px; 
+      color: #555; 
+    } 
+    
+    .email a { 
+      color: #555; 
+      text-decoration: underline; 
+    } 
+    
+    .email a:hover { 
+      color: #000; 
+    } 
+   </style> 
+ </head> 
+  <body> 
+    
+    <!-- 타이틀 --> 
+    <div class="top-left">민지 Jung Minji</div> 
+    
+    <!-- 목록 --> 
+    <div class="menu"> 
+      <div class="works-wrapper"> 
+        <a id="works-toggle">작업들 works</a> 
+        <div id="works-list" class="works-list"> 
+          <div>stone (2022)</div> 
+          <div>movement (2023)</div> 
+          <div>structure (2024)</div> 
+        </div> 
+      </div> 
+      <a href="images.html">이미지들 images</a> 
+      <a href="notes.html">글들 notes</a> </div> 
+    
+    <!-- 하단 이메일 --> 
+    <div class="email"> 
+      <a href="mailto:alswlleft@google.com">contact: alswlleft@google.com</a> 
+    </div> 
+    
+    <script> 
+      // works 클릭 시 목록 토글 
+      const worksToggle = document.getElementById('works-toggle'); 
+      const worksList = document.getElementById('works-list'); 
+      
+      worksToggle.addEventListener('click', () => {
+        worksList.classList.toggle('show'); // 목록 토글
+        worksToggle.classList.toggle('open'); // 링크 장식 토글
+      });
+    </script> 
+  </body> 
 </html>
