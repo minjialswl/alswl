@@ -71,6 +71,18 @@
       border: none;
     }
     
+     /* 캡션 */
+    #work-caption {
+      position: static;
+      margin-top: 5px;
+      text-align: right;
+      font-size: 12px;
+      color: #000;
+      background-color: transparent;
+      padding: 0;
+      display: none;
+    }
+    
     /* 이메일 */ 
     .email { 
       position: fixed; 
@@ -88,6 +100,16 @@
     .email a:hover { 
       color: #000; 
     } 
+    
+    /* 모바일 폰트 크기 조정 */
+    @media (max-width: 600px) {
+      body, .menu, .top-left {
+        font-size: 18px;
+      }
+      #work-caption {
+        font-size: 14px;
+      }
+    }
    </style> 
  </head> 
   <body> 
@@ -98,13 +120,13 @@
     <!-- 목록과 이미지 영역을 감싸는 컨테이너 -->
     <div class="content-wrapper" style="display: flex; gap: 20px;">
       
-    <!-- 목록 --> 
+    <!-- 목록 + 이미지 --> 
     <div class="menu"> 
       <div class="works-wrapper"> 
         <a id="works-toggle">작업들 works</a> 
         <div id="works-list" class="works-list"> 
-          <div class="work-item" data-img="images/works/racingmodel1.png">레이싱모델: 은지</div>
-          <div class="work-item" data-img="images/works/9701241.png">97저 0124?</div> 
+          <div class="work-item" data-img="images/works/racingmodel1.png" data-caption="<레이싱모델: 은지>, 2025, PLA에 카본파이버, 50×140x70cm">레이싱모델: 은지</div>
+          <div class="work-item" data-img="images/works/9701241.png" data-caption="<97저 0124(가제)>, 2025, 헤드라이트에 락카, 반사경">97저 0124?</div> 
           <div class="work-item" data-img="images/works/puke1.png">토?</div>
           <div class="work-item" data-img="images/works/negative1.png">네거티브 소묘?</div> 
           <div class="work-item" data-img="images/works/psyche1.png">숨에 깃든?</div> 
@@ -118,10 +140,12 @@
       <a href="notes.html">글들 notes</a> </div> 
     
     <!-- 이미지 표시 영역 -->
-    <div id="work-display">
+     <div id="work-display">
       <img id="work-img" src="" alt="">
+      <div id="work-caption"></div>
     </div>
-
+  </div>
+    
     <!-- 하단 이메일 --> 
     <div class="email"> 
       <a href="mailto:alswlleft@google.com">contact: alswlleft@google.com</a> 
@@ -130,7 +154,7 @@
     <script> 
       // works 클릭 시 목록 토글 
       const worksToggle = document.getElementById('works-toggle');
-      const worksList = document.getElementById('works-list'); 
+      const worksList = document.getElementById('works-list');
       
       worksToggle.addEventListener('click', () => {
         worksList.classList.toggle('show'); // 목록 토글
@@ -140,12 +164,16 @@
       // 각 작품 클릭 시 이미지 표시
     const workItems = document.querySelectorAll('.work-item');
     const workImg = document.getElementById('work-img');
+    const workCaption = document.getElementById('work-caption');
 
     workItems.forEach(item => {
       item.addEventListener('click', () => {
         const imgSrc = item.getAttribute('data-img'); // data-img에서 이미지 경로 가져오기
+        const captionText = item.getAttribute('data-caption');
         workImg.src = imgSrc;
         workImg.style.display = 'block'; // 이미지 표시
+        workCaption.textContent = captionText;
+        workCaption.style.display = 'block';
         });
       });
     </script> 
