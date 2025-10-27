@@ -45,6 +45,14 @@
       color: #000;
     }
 
+    /* 메뉴와 타이틀 전용 블러 효과 */
+    .top-left, .menu a {
+      text-shadow:
+        0 0 2px rgba(0,0,0,0.2),
+        0 0 4px rgba(0,0,0,0.2),
+        0 0 6px rgba(0,0,0,0.2);
+    }
+    
     /* works 목록 토글 */
     .works-list {
       max-height: 0;
@@ -113,6 +121,16 @@
       z-index: -1;
     }
 
+    /*소개*/
+    .bio {
+      position: fixed;
+      bottom: 20px;
+      left: 40px;
+      font-size: 14px;
+      color: #000;
+      z-index: 10;
+    }
+    
     /* 이메일 */
     .email {
       position: fixed;
@@ -134,7 +152,7 @@
 
     /* 모바일 전용 */
     @media (max-width: 1080px) {
-      body, .menu, .works-list, #work-caption, .email {
+      body, .menu, .works-list, #work-caption,.bio, .email {
         font-size: 18px;
       }
       .top-left {
@@ -201,6 +219,11 @@
     </div>
   </div>
 
+  <!-- 바이오 -->
+  <div class="bio">
+    <a>서울에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다. 자세한 것은 '이미지들'을 참고해주세요. <br> I create mechanical and non-mechanical sculpture and installation works in Seoul. For more details, please refer to the "Images" section. </a>
+  </div>
+  
   <!-- 이메일 -->
   <div class="email">
     <a href="mailto:alswlleft@google.com">contact: alswlleft@google.com</a>
