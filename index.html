@@ -6,7 +6,7 @@
   <style>
     /* 기본 스타일 */
     body {
-      cursor: url('https://minjialswl.github.io/alswl/website/cur.png'), auto;
+      cursor: url('https://minjialswl.github.io/alswl/main/cur/cur1.png'), auto;
       font-family: dotum, sans-serif;
       font-weight: 400;
       color: #000;
@@ -83,31 +83,33 @@
     /* 이미지 영역 */
     #work-display {
       margin-top: 20px;
-      margin-bottom: 200px;
+      margin-bottom: 150px;
       flex: 1;
       min-width: 200px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       width: 80vw;
       z-index: 10;
       position: relative;
     }
 
     #work-display img {
-      width: 100%;
+      width: 90%;
       height: auto;
       display: none; /* 작품 이미지는 기본 숨김 */
       border: none;
+      margin: 0 auto;
     }
 
     #work-caption {
       margin-top: 5px;
+      width: 90%;
+      margin: 0 auto;  
       text-align: right;
       font-size: 12px;
       color: #000;
       display: none;
-      width: 100%;
     }
 
     /* 첫 화면 이미지 */
@@ -120,17 +122,17 @@
       object-fit: contain;
       z-index: -1;
     }
-
+    
     /*소개*/
     .bio {
       position: fixed;
-      bottom: 60px;
+      bottom: 40px;
       left: 40px;
       font-size: 14px;
       color: #000;
       z-index: 10;
     }
-    
+
     /* 이메일 */
     .email {
       position: fixed;
@@ -152,7 +154,7 @@
 
     /* 모바일 전용 */
     @media (max-width: 1080px) {
-      body, .menu, .works-list, #work-caption,.bio, .email {
+      body, .menu, .works-list, #work-caption, .email, .bio {
         font-size: 18px;
       }
       .top-left {
@@ -177,14 +179,14 @@
     }
 
    * {
-    cursor: url('https://minjialswl.github.io/alswl/website/cur.png'), auto !important;
+    cursor: url('https://minjialswl.github.io/alswl/main/cur/cur1.png'), auto !important;
   }
   </style>
 </head>
 <body>
 
   <!-- 첫 화면 이미지 (수정된 부분) -->
-  <img id="first-screen-img" src="https://minjialswl.github.io/alswl/website/mainimg.JPG" alt="첫 화면 이미지">
+  <img id="first-screen-img" src="https://minjialswl.github.io/alswl/main/img/main.JPG" alt="첫 화면 이미지">
 
   <!-- 타이틀 -->
   <div class="top-left">
@@ -221,7 +223,7 @@
 
   <!-- 바이오 -->
   <div class="bio">
-    <a>서울에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다. <br> 자세한 것은 '이미지들'을 참고해주세요. <br> I create mechanical and non-mechanical sculpture and installation works in Seoul. <br> For more details, please refer to the "Images" section. </a>
+    <a>서울시와 경기도의 경계에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다.<br> 자세한 것은 '이미지들'을 참고해주세요. <br> I create mechanical and non-mechanical sculpture and installation works in Seoul. <br> For more details, please refer to the "Images" section. </a>
   </div>
   
   <!-- 이메일 -->
@@ -246,14 +248,50 @@
     // 작품 클릭 시
     workItems.forEach(item => {
       item.addEventListener('click', () => {
-        firstScreenImg.style.display = 'none'; // 첫 화면 이미지 숨김
+        // 첫 화면 이미지 숨김
+        firstScreenImg.style.display = 'none'; 
 
+        // 작품 이미지 표시
         workImg.src = item.getAttribute('data-img');
         workImg.style.display = 'block';
 
+        // 캡션 표시
         const captionText = item.getAttribute('data-caption');
         workCaption.textContent = captionText || '';
         workCaption.style.display = captionText ? 'block' : 'none';
+        
+        // 기존 영상이 있으면 제거
+        const existingVideo = document.getElementById('work-video');
+        if (existingVideo) existingVideo.remove();
+
+        // 레이싱모델: 은지일 때만 영상 추가
+        const titleText = item.textContent.trim();
+        if (titleText === '레이싱모델: 은지') {
+          const iframeWrapper = document.createElement('div');
+          iframeWrapper.style.position = 'relative';
+          iframeWrapper.style.width = '90%';
+          iframeWrapper.style.paddingTop = '56.25%'; // 16:9 비율 유지
+          iframeWrapper.style.margin = '0 auto';
+          iframeWrapper.style.marginBottom = '10px';
+          
+          const iframe = document.createElement('iframe');
+          iframe.id = 'work-video';
+          iframe.src = 'https://www.youtube.com/embed/5pM9JX3vTmA';
+          iframe.style.position = 'absolute';
+          iframe.style.top = '0';
+          iframe.style.left = '0';
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+          iframe.frameBorder = '0';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          
+          iframeWrapper.appendChild(iframe);
+
+          // workDisplay 영역에 추가
+          const workDisplay = document.getElementById('work-display');
+          workDisplay.insertBefore(iframeWrapper, workImg);
+        }
       });
     });
 
