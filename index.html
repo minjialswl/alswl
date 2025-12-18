@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>민지 Jung Minji</title>
+
   <style>
-    /* 기본 스타일 */
     body {
       cursor: url('https://minjialswl.github.io/alswl/main/cur/cur1.png'), auto;
       font-family: dotum, sans-serif;
@@ -14,24 +14,20 @@
       margin-top: 30px;
     }
 
-    /* 타이틀 */
     .top-left {
-      text-align: left;
       font-size: 14px;
       margin-bottom: 10px;
-      z-index: 10;
       position: relative;
+      z-index: 10;
     }
 
-    /* 메뉴 */
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 0px;
       font-size: 14px;
       margin-left: 5px;
-      z-index: 10;
       position: relative;
+      z-index: 10;
     }
 
     .menu a {
@@ -42,25 +38,19 @@
 
     .menu a:hover {
       text-decoration: none;
-      color: #000;
     }
 
-    /* 메뉴와 타이틀 전용 블러 효과 */
     .top-left, .menu a {
       text-shadow:
         0 0 2px rgba(0,0,0,0.2),
         0 0 4px rgba(0,0,0,0.2),
         0 0 6px rgba(0,0,0,0.2);
     }
-    
-    /* works 목록 토글 */
+
     .works-list {
       max-height: 0;
       overflow: hidden;
-      margin-top: 0px;
       margin-left: 15px;
-      font-size: 14px;
-      line-height: 1.1;
       transition: max-height 5s ease;
     }
 
@@ -68,239 +58,260 @@
       max-height: 500px;
     }
 
-    #works-toggle.open {
-      text-decoration: none;
-    }
-
-    /* 목록 + 이미지 영역 */
     .content-wrapper {
       display: flex;
       gap: 20px;
-      z-index: 10;
       position: relative;
-    }
-
-    /* 이미지 영역 */
-    #work-display {
-      margin-top: 20px;
-      margin-bottom: 150px;
-      flex: 1;
-      min-width: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 80vw;
       z-index: 10;
-      position: relative;
     }
 
-    #work-display img {
-      width: 90%;
-      height: auto;
-      display: none; /* 작품 이미지는 기본 숨김 */
-      border: none;
-      margin: 0 auto;
-    }
-
-    #work-caption {
-      margin-top: 5px;
-      width: 90%;
-      margin: 0 auto;  
-      text-align: right;
-      font-size: 12px;
-      color: #000;
-      display: none;
-    }
-
-    /* 첫 화면 이미지 */
     #first-screen-img {
       position: fixed;
-      top: 50%;
-      left: 60%;
-      width: 30%;
-      height: auto;
-      object-fit: contain;
+      top: 70%;
+      left: 55%;
+      width: 40%;
+      transform: translateY(-50%);
       z-index: -1;
     }
-    
-    /*소개*/
+
     .bio {
       position: fixed;
       bottom: 40px;
       left: 40px;
       font-size: 14px;
-      color: #000;
       z-index: 10;
     }
 
-    /* 이메일 */
     .email {
       position: fixed;
       bottom: 20px;
       right: 40px;
       font-size: 14px;
-      color: #555;
       z-index: 10;
     }
-
-    .email a {
-      color: #555;
-      text-decoration: underline;
+    
+    .video-wrapper {
+      position: relative;
+      width: 90%;
+      padding-top: 56.25%;
+      margin-bottom: 20px;
     }
 
-    .email a:hover {
-      color: #000;
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+     #work-display {
+      margin-top: 20px;
+      margin-bottom: 150px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80vw;
     }
 
-    /* 모바일 전용 */
-    @media (max-width: 1080px) {
-      body, .menu, .works-list, #work-caption, .email, .bio {
-        font-size: 18px;
-      }
-      .top-left {
-        font-size: 18px;
-      }
-
-      .content-wrapper {
-        flex-direction: column; /* 모바일 세로 배치 */
-      }
-      
-      #work-display {
-        width: 100%;
-      }
-
-      #work-display img {
-        width: 100%;
-      }
-      
-      #work-caption {
-        width: 100%;
-      }
+    .work-img-item {
+      width: 90%;
+      margin: 0 auto 20px auto;
+      display: block;
+      min-height: 300px;
     }
 
-   * {
-    cursor: url('https://minjialswl.github.io/alswl/main/cur/cur1.png'), auto !important;
-  }
+    #work-caption {
+      width: 90%;
+      margin: 0 auto;
+      text-align: right;
+      font-size: 12px;
+      display: none;
+    }
+
+    * {
+      cursor: url('https://minjialswl.github.io/alswl/main/cur/cur1.png'), auto !important;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- 첫 화면 이미지 (수정된 부분) -->
-  <img id="first-screen-img" src="https://minjialswl.github.io/alswl/main/img/main.JPG" alt="첫 화면 이미지">
+<img id="first-screen-img" src="https://minjialswl.github.io/alswl/main/img/main.JPG" alt="main">
 
-  <!-- 타이틀 -->
-  <div class="top-left">
-    <a href="#" style="text-decoration: none; color: inherit;" id="top-left-link">민지 Jung Minji</a>
-  </div>
+<div class="top-left">
+  <a href="#" id="top-left-link" style="text-decoration:none;color:inherit;">민지 Jung Minji</a>
+</div>
 
-  <!-- 목록 + 이미지 영역 -->
-  <div class="content-wrapper">
-    <div class="menu">
-      <div class="works-wrapper">
-        <a id="works-toggle">작업들 works</a>
-        <div id="works-list" class="works-list">
-          <div class="work-item" data-img="images/works/racingmodel1.png" data-caption="<레이싱모델: 은지>, 2025, PLA에 카본파이버, 50×140x70cm">레이싱모델: 은지</div>
-          <div class="work-item" data-img="images/works/9701241.png" data-caption="<97저 0124(가제)>, 2025, 헤드라이트에 락카, 반사경">97저 0124?</div>
-          <div class="work-item" data-img="images/works/puke1.png">토?</div>
-          <div class="work-item" data-img="images/works/negative1.png">네거티브 소묘?</div>
-          <div class="work-item" data-img="images/works/psyche1.png">숨에 깃든?</div> 
-          <div class="work-item" data-img="images/works/archillesheel1.png">아킬레스 피어싱?</div> 
-          <div class="work-item" data-img="stone.jpg">scopetrigger?</div> 
-          <div class="work-item" data-img="stone.jpg">plasterknife?</div> 
-          <div class="work-item" data-img="stone.jpg">방어하는 조각?</div>
-        </div>
+<div class="content-wrapper">
+  <div class="menu">
+    <a id="works-toggle">작업들 works</a>
+    <div id="works-list" class="works-list">
+      <div class="work-item"
+        data-img="
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_1.png|
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_2.png|
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_3.png
+"
+        data-video="https://www.youtube.com/embed/5pM9JX3vTmA"   
+        data-caption="<레이싱모델: 은지>, 2025, PLA에 카본파이버, 50×140x70cm">
+        레이싱모델: 은지
       </div>
-      <a href="images.html">이미지들 images</a>
-      <a href="notes.html">글들 notes</a>
+
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/dashcam/dashcam_1.jpeg|
+https://minjialswl.github.io/alswl/works/dashcam/dashcam_2.jpeg                  
+"
+        data-caption="<대쉬캠>, 2025, 헤드라이트에 락카, 반사경">
+        대쉬캠
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/puke/puke_1.jpeg|
+https://minjialswl.github.io/alswl/works/puke/puke_2.jpeg    "
+        data-caption="<토>, 2025, 바세린에 오물">
+        토
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/psyche/psyche_1.jpg|
+https://minjialswl.github.io/alswl/works/psyche/psyche_2.jpg    
+"
+        data-video="https://www.youtube.com/embed/u6MyZm8NTzQ"
+        data-caption="<숨에 깃든 것들>, 2024, 에어펌프, TPU, 시트지에 프린트, 45x5x50cm">
+        숨에 깃든 것들
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/anti-scratch/anti-scratch_1.jpg|
+https://minjialswl.github.io/alswl/works/anti-scratch/anti-scratch_2.jpg|
+https://minjialswl.github.io/alswl/works/anti-scratch/anti-scratch_3.jpg
+"
+        data-caption="<anti-scratch>, 2024, ohp필름에 스프레이, 21x29.7cm">
+        anti-scratch
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/keloid/keloid_1.JPG|
+https://minjialswl.github.io/alswl/works/keloid/keloid_2.jpg
+"
+        data-caption="<켈로이드>, 2023, 스컬피, 의료용 봉합사, 5x90x65cm">
+        켈로이드
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/achilles'piercing/archilles'piercing_1.JPG|
+https://minjialswl.github.io/alswl/works/achilles'piercing/archilles'piercing_2.JPG|
+https://minjialswl.github.io/alswl/works/achilles'piercing/archilles'piercing_3.JPG                  
+"
+        data-caption="<아킬레스 피어싱>, 2023, 나무, (거대한)피어싱, 체인">
+        아킬레스 피어싱
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/scopetrigger/scopeTrigger_1.jpg|
+https://minjialswl.github.io/alswl/works/scopetrigger/scopeTrigger_2.jpg|
+https://minjialswl.github.io/alswl/works/scopetrigger/scopeTrigger_3.jpg                  
+"
+        data-video="https://www.youtube.com/embed/IopQ0jjQ_H0"
+        data-caption="<스코프트리거>, 2021, PLA, 렌즈, 거울, LED">
+        스코프트리거
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/plasterknife/plasterKnife_1.jpg|
+https://minjialswl.github.io/alswl/works/plasterknife/plasterKnife_2.jpg
+"
+        data-video="https://www.youtube.com/embed/gmII8HVrLpA"
+        data-caption="<석고칼>, 2021, 석고, 모터, 크리스탈클리어, 10x86x70cm">
+        석고칼
+      </div>
+      
+      <div class="work-item"
+        data-img="https://minjialswl.github.io/alswl/works/Mola/Mola_1.jpg|
+https://minjialswl.github.io/alswl/works/Mola/Mola_2.jpg
+"
+        data-caption="<Mola>, 2020, 초음파센서, 모터, 유토, 실리콘, 석고, 파이프, 40x50x120cm">
+        Mola
+      </div>
     </div>
 
-    <div id="work-display">
-      <!-- 작품 이미지 -->
-      <img id="work-img" src="" alt="">
-      <div id="work-caption"></div>
-    </div>
+    <a href="images.html">이미지들 images</a>
+    <a href="notes.html">글들 notes</a>
   </div>
 
-  <!-- 바이오 -->
-  <div class="bio">
-    <a>서울시와 경기도의 경계에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다.<br> 자세한 것은 '이미지들'을 참고해주세요. <br> I create mechanical and non-mechanical sculpture and installation works in Seoul. <br> For more details, please refer to the "Images" section. </a>
+  <div id="work-display">
+    <div id="work-caption"></div>
   </div>
-  
-  <!-- 이메일 -->
-  <div class="email">
-    <a href="mailto:alswlleft@google.com">contact: alswlleft@google.com</a>
-  </div>
+</div>
 
-  <script>
-    // works 토글
-    const worksToggle = document.getElementById('works-toggle');
-    const worksList = document.getElementById('works-list');
-    worksToggle.addEventListener('click', () => {
-      worksList.classList.toggle('show');
-      worksToggle.classList.toggle('open');
+<div class="bio">
+  서울시와 경기도의 경계에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다.
+</div>
+
+<div class="email">
+  <a href="mailto:alswlleft@google.com">contact: alswlleft@google.com</a>
+</div>
+
+<script>
+  const worksToggle = document.getElementById('works-toggle');
+  const worksList = document.getElementById('works-list');
+  const workItems = document.querySelectorAll('.work-item');
+  const workDisplay = document.getElementById('work-display');
+  const workCaption = document.getElementById('work-caption');
+  const firstScreenImg = document.getElementById('first-screen-img');
+
+  worksToggle.addEventListener('click', () => {
+    worksList.classList.toggle('show');
+  });
+
+  workItems.forEach(item => {
+    item.addEventListener('click', () => {
+      firstScreenImg.style.display = 'none';
+
+      workDisplay.querySelectorAll('.work-img-item, .video-wrapper')
+        .forEach(el => el.remove());
+      
+      const videoSrc = item.getAttribute('data-video');
+      if (videoSrc) {
+        const videoWrapper = document.createElement('div');
+        videoWrapper.className = 'video-wrapper';
+
+        const iframe = document.createElement('iframe');
+        iframe.src = videoSrc;
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+
+        videoWrapper.appendChild(iframe);
+        workDisplay.insertBefore(videoWrapper, workCaption);
+      }
+
+      const imgData = item.getAttribute('data-img');
+      if (imgData) {
+        imgData.split('|').forEach(src => {
+          const img = document.createElement('img');
+          img.src = src.trim();
+          img.className = 'work-img-item';
+          img.loading = 'lazy';
+          workDisplay.insertBefore(img, workCaption);
+        });
+      }
+
+      const captionText = item.getAttribute('data-caption');
+      workCaption.textContent = captionText || '';
+      workCaption.style.display = captionText ? 'block' : 'none';
+
     });
+  });
 
-    const workItems = document.querySelectorAll('.work-item');
-    const workImg = document.getElementById('work-img');
-    const workCaption = document.getElementById('work-caption');
-    const firstScreenImg = document.getElementById('first-screen-img');
+  document.getElementById('top-left-link').addEventListener('click', e => {
+    e.preventDefault();
+    location.reload();
+  });
+</script>
 
-    // 작품 클릭 시
-    workItems.forEach(item => {
-      item.addEventListener('click', () => {
-        // 첫 화면 이미지 숨김
-        firstScreenImg.style.display = 'none'; 
-
-        // 작품 이미지 표시
-        workImg.src = item.getAttribute('data-img');
-        workImg.style.display = 'block';
-
-        // 캡션 표시
-        const captionText = item.getAttribute('data-caption');
-        workCaption.textContent = captionText || '';
-        workCaption.style.display = captionText ? 'block' : 'none';
-        
-        // 기존 영상이 있으면 제거
-        const existingVideo = document.getElementById('work-video');
-        if (existingVideo) existingVideo.remove();
-
-        // 레이싱모델: 은지일 때만 영상 추가
-        const titleText = item.textContent.trim();
-        if (titleText === '레이싱모델: 은지') {
-          const iframeWrapper = document.createElement('div');
-          iframeWrapper.style.position = 'relative';
-          iframeWrapper.style.width = '90%';
-          iframeWrapper.style.paddingTop = '56.25%'; // 16:9 비율 유지
-          iframeWrapper.style.margin = '0 auto';
-          iframeWrapper.style.marginBottom = '10px';
-          
-          const iframe = document.createElement('iframe');
-          iframe.id = 'work-video';
-          iframe.src = 'https://www.youtube.com/embed/5pM9JX3vTmA';
-          iframe.style.position = 'absolute';
-          iframe.style.top = '0';
-          iframe.style.left = '0';
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-          iframe.frameBorder = '0';
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-          iframe.allowFullscreen = true;
-          
-          iframeWrapper.appendChild(iframe);
-
-          // workDisplay 영역에 추가
-          const workDisplay = document.getElementById('work-display');
-          workDisplay.insertBefore(iframeWrapper, workImg);
-        }
-      });
-    });
-
-    // 상단 타이틀 클릭 시 첫 화면으로 초기화
-    const topLeftLink = document.getElementById('top-left-link');
-    topLeftLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = "index.html";
-    });
-  </script>
 </body>
 </html>
