@@ -63,3 +63,37 @@ langLinks.forEach(link => {
   link.href = `/alswl/${link.textContent}${path}`;
 });
 
+// ----------------------
+// works list 자동 생성
+// ----------------------
+
+const worksListEl = document.getElementById('works-list');
+
+// 현재 언어 판별 (URL 기준)
+const currentLang = location.pathname.includes('/en/') ? 'en' : 'ko';
+
+WORKS.forEach(work => {
+  const item = document.createElement('div');
+  item.className = 'work-item';
+
+  // 제목
+  item.textContent = work.title[currentLang];
+
+  // 이미지 데이터
+  if (work.images && work.images.length) {
+    item.setAttribute('data-img', work.images.join('|'));
+  }
+
+  // 비디오 데이터
+  if (work.video) {
+    item.setAttribute('data-video', work.video);
+  }
+
+  // 캡션
+  if (work.caption && work.caption[currentLang]) {
+    item.setAttribute('data-caption', work.caption[currentLang]);
+  }
+
+  worksListEl.appendChild(item);
+});
+
