@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>민지 Jung Minji</title>
+
+  <link rel="stylesheet" href="/assets/css/font-ko.css">
+</head>
+<body>
+
+<div id="page-content">
+
+  <!-- works list -->
+  <div class="work-item"
+    data-img="
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_1.png|
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_2.png|
+https://minjialswl.github.io/alswl/works/gridgirl;Mia/gridgirl;Mia_3.png
+"
+    data-video="https://www.youtube.com/embed/5pM9JX3vTmA"
+    data-caption="<레이싱모델: 은지>, 2025, PLA에 카본파이버, 50×140x70cm">
+    레이싱모델: 은지
+  </div>
+
+  <!-- 이후 다른 work-item들 동일 -->
+</div>
+
+<script>
+fetch('/includes/layout.html')
+  .then(res => res.text())
+  .then(html => {
+    document.documentElement.innerHTML =
+      html.replace('{{content}}',
+        document.getElementById('page-content').innerHTML
+      );
+  });
+</script>
+
+</body>
+</html>
