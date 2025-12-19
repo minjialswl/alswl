@@ -1,0 +1,62 @@
+<!-- includes/layout.html -->
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <title>민지 Jung Minji</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+</head>
+<body>
+
+<img id="first-screen-img"
+     src="https://minjialswl.github.io/alswl/main/img/main.JPG"
+     alt="main">
+
+<div class="top-left">
+  <a href="#" id="top-left-link"
+     style="text-decoration:none;color:inherit;">
+    민지 Jung Minji
+  </a>
+</div>
+
+<div class="content-wrapper">
+
+  <div class="menu">
+    <a id="works-toggle">작업들 works</a>
+    <div id="works-list" class="works-list">
+      <!-- works list는 각 페이지에서 주입 -->
+    </div>
+
+    <a href="images.html">이미지들 images</a>
+    <a href="notes.html">글들 notes</a>
+  </div>
+
+  <div id="work-display">
+    <!-- 페이지별 콘텐츠 -->
+    {{content}}
+    <div id="work-caption"></div>
+  </div>
+
+</div>
+
+<div class="bio">
+  <a>
+    서울시와 경기도의 경계에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다.<br>
+    자세한 것은 '이미지들'을 참고해주세요.<br>
+    I create mechanical and non-mechanical sculpture and installation works in Seoul.<br>
+    For more details, please refer to the "Images" section.
+  </a>
+</div>
+
+<div class="email">
+  <a href="mailto:jungmiiinji@gmail.com">
+    contact: jungmiiinji@gmail.com
+  </a>
+</div>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>
