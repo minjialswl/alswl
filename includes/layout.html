@@ -1,21 +1,22 @@
-<!-- includes/layout.html -->
 <!DOCTYPE html>
 <html lang="">
 <head>
   <meta charset="UTF-8">
   <title>민지 Jung Minji</title>
 
-  <link rel="stylesheet" href="/assets/css/main.css">
-
+  <link rel="stylesheet" href="/alswl/assets/css/main.css">
 </head>
 <body>
 
-<img id="first-screen-img"
-     src="https://minjialswl.github.io/alswl/main/img/main.JPG"
-     alt="main">
+<img
+  id="first-screen-img"
+  src="https://minjialswl.github.io/alswl/main/img/main.JPG"
+  alt="main"
+>
 
-<div class="top-left">
-  <a href="#" id="top-left-link"
+<div class="header">
+  <a href="/alswl/ko/index.html"
+     id="header-link"
      style="text-decoration:none;color:inherit;">
     민지 Jung Minji
   </a>
@@ -24,17 +25,16 @@
 <div class="content-wrapper">
 
   <div class="menu">
-    <a id="works-toggle">작업들 works</a>
+    <a id="works-toggle">작업들works</a>
+
     <div id="works-list" class="works-list">
-      <!-- works list는 각 페이지에서 주입 -->
+      <!-- works 목록이 페이지에서 주입됨 -->
     </div>
 
-    <a href="images.html">이미지들 images</a>
-    <a href="notes.html">글들 notes</a>
+    <a href="/alswl/ko/board.html">보드board</a>
   </div>
 
   <div id="work-display">
-    <!-- 페이지별 콘텐츠 -->
     {{content}}
     <div id="work-caption"></div>
   </div>
@@ -56,7 +56,6 @@
   </a>
 </div>
 
-<script src="/assets/js/main.js"></script>
-
+<script src="/alswl/assets/js/main.js"></script>
 </body>
 </html>
