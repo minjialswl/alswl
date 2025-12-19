@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jung Minji</title>
+  <link rel="stylesheet" href="/alswl/assets/css/main.css">  
+</head>
+
+<body>
+
+  <div id="page-content"></div>
+
+  <script>
+    fetch('/alswl/includes/layout.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('page-content').innerHTML = html;
+      });
+  </script>
+
+  <script src="/alswl/assets/js/works-data-en.js"></script>
+  <script src="/alswl/assets/js/main.js"></script>
+
+</body>
+</html>
