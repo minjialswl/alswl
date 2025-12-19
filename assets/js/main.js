@@ -55,3 +55,11 @@ document
     e.preventDefault();
     location.reload();
   });
+
+const langLinks = document.querySelectorAll('.lang-switch a');
+
+langLinks.forEach(link => {
+  const path = location.pathname.replace(/^\/alswl\/(ko|en)/, '');
+  link.href = `/alswl/${link.textContent}${path}`;
+});
+
