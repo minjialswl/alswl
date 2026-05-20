@@ -1,41 +1,67 @@
+import Link from "next/link";
 import { works } from "@/data/works";
 
 type Props = {
   lang: string;
+  variant?: "desktop" | "mobile";
 };
 
-export default function Sidebar({ lang }: Props) {
-  return (
-    <aside className="w-64 p-8 h-screen flex flex-col justify-between text-sm">
-      <div>
-        <a
-          href={`/${lang}`}
-          className="block mb-10"
+function renderLightEnglish(text: string) {
+  return text.split(/([A-Za-z0-9][A-Za-z0-9'’:\-. ]*)/g).map((part, index) =>
+    /[A-Za-z0-9]/.test(part) ? (
+      <span key={index} className="font-light">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
+
+export default function Sidebar({ lang, variant = "desktop" }: Props) {
+  const worksLabel = lang === "ko" ? "작업들" : "Works";
+  const boardLabel = lang === "ko" ? "보드" : "Board";
+  const isMobile = variant === "mobile";
+  const worksList = (
+    <div className={`mt-[1vh] flex flex-col gap-[0.3vh] pl-[0.5em] ${isMobile ? "border-l border-current" : ""}`}>
+      {works.map((work) => (
+        <Link
+          key={work.slug}
+          href={`/${lang}/${work.slug}`}
         >
-          민지 Jung Minji
-        </a>
+          {lang === "ko" ? renderLightEnglish(work.title.ko) : work.title.en}
+        </Link>
+      ))}
+    </div>
+  );
 
-        <nav className="flex flex-col gap-1">
-          <div className="flex flex-col space-y-[1px]">
-            <p>{lang === "ko" ? "작업" : "Works"}</p>
+  return (
+    <nav className={`leading-[0.95] pointer-events-auto`}>
 
-            <div className="flex flex-col space-y-[1px]">
-              {works.map((work) => (
-                <a
-                  key={work.slug}
-                  href={`/${lang}/${work.slug}`}
-                >
-                  {work.title[lang as "ko" | "en"]}
-                </a>
-              ))}
-            </div>
+      {isMobile ? (
+        <details>
+          <summary className="block cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            {worksLabel}
+          </summary>
+
+          {worksList}
+        </details>
+      ) : (
+        <>
+          <div>
+            {worksLabel}
           </div>
 
-          <a href={`/${lang}/board`}>
-            {lang === "ko" ? "보드" : "Board"}
-          </a>
-        </nav>
+          {worksList}
+        </>
+      )}
+
+      <div className="mt-[2vh]">
+        <Link href={`/${lang}/board`}>
+          {boardLabel}
+        </Link>
       </div>
-    </aside>
+
+    </nav>
   );
 }

@@ -1,21 +1,18 @@
+import MainImage from "@/components/MainImage";
+import { languages } from "@/data/languages";
+
 type Props = {
   params: Promise<{
     lang: string;
   }>;
 };
 
-export default async function Home({ params }: Props) {
-  const { lang } = await params;
+export function generateStaticParams() {
+  return languages.map((lang) => ({ lang }));
+}
 
-  return (
-   <div className="relative h-[calc(100vh-120px)]">
-      <div className="absolute right-24 bottom-24 w-[600px]">
-        <img
-          src="/main-image.jpg"
-          alt=""
-          className="w-full object-cover"
-        />
-      </div>
-    </div>
-  );
+export default async function Home({ params }: Props) {
+  await params;
+
+  return <MainImage />;
 }

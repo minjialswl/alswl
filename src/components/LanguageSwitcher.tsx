@@ -1,17 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
 
-  const koPath = pathname.replace(/^\/(ko|en)/, "/ko");
-  const enPath = pathname.replace(/^\/(ko|en)/, "/en");
+  const switchedPath = pathname.startsWith("/ko")
+    ? pathname.replace("/ko", "/en")
+    : pathname.replace("/en", "/ko");
 
   return (
-    <div className="flex justify-end mb-10 gap-4">
-      <a href={koPath}>ko</a>
-      <a href={enPath}>en</a>
-    </div>
+    <Link href={switchedPath}>
+      {pathname.startsWith("/ko") ? (
+        <span className="font-light">en</span>
+      ) : (
+        "ko"
+      )}
+    </Link>
   );
 }
