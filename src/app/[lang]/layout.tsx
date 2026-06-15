@@ -23,7 +23,7 @@ export default async function LangLayout({
   const bio =
     lang === "ko"
       ? "정민지의 작업을 아카이브하기 위한 사이트입니다.\n궁금하신 것이 있다면 메일 주세요→→→ "
-      : "This is a personal archive of Jung Minji’s work.\ㅜPlease email me with any questions.→→→ ";
+      : "This is a personal archive of Jung Minji’s work.\nPlease email me with any questions.→→→ ";
   return (
     <>
       <div className="landscape-layout">
