@@ -19,7 +19,7 @@ export default function MainImage() {
           w-auto
           h-auto
           
-          mr-[6vw]
+          mr-[2vw]
           mb-[5vh]
           portrait:mr-[0vw]
 

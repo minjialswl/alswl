@@ -9,7 +9,7 @@ export default function RootPage() {
 
   return (
     <main className="min-h-[100svh] flex items-center justify-center text-sm">
-      <a href="ko/">민지 Minji</a>
+      <a href="ko/">정민지 JungMinji</a>
     </main>
   );
 }

@@ -22,9 +22,8 @@ export default async function LangLayout({
 
   const bio =
     lang === "ko"
-      ? "서울시와 경기도의 경계에서 기계거나 기계가 아닌 조각과 설치 작업을 만듭니다.\n자세한 것은 '이미지들'을 참고해주세요."
-      : "I create mechanical and non-mechanical sculpture and installation works in Seoul.\nFor more details, please refer to the 'Images' section.";
-
+      ? "정민지의 작업을 아카이브하기 위한 사이트입니다.\n궁금하신 것이 있다면 메일 주세요→→→ "
+      : "This is a personal archive of Jung Minji’s work.\ㅜPlease email me with any questions.→→→ ";
   return (
     <>
       <div className="landscape-layout">

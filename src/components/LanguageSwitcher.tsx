@@ -13,9 +13,9 @@ export default function LanguageSwitcher() {
   return (
     <Link href={switchedPath}>
       {pathname.startsWith("/ko") ? (
-        <span className="font-light">en</span>
+        <span>en</span>
       ) : (
-        "ko"
+        "한국어"
       )}
     </Link>
   );

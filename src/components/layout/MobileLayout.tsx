@@ -1,3 +1,9 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import BoardCanvas from "@/components/BoardCanvas";
+import ExhibitionsNav from "@/components/ExhibitionsNav";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Sidebar from "@/components/Sidebar";
 import Title from "@/components/Title";
@@ -13,11 +19,18 @@ export default function MobileLayout({
   lang,
   bio,
 }: Props) {
+  const pathname = usePathname();
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const langIndex = pathSegments.lastIndexOf(lang);
+  const routeSegments = pathSegments.slice(langIndex + 1);
+  const isHomePage = routeSegments.length === 0;
+  const [isBoardOpen, setIsBoardOpen] = useState(false);
+
   return (
-    <div className="fixed inset-0 isolate w-full h-[100svh] overflow-hidden overscroll-none flex flex-col text-[0.85rem]">
+    <div className="fixed inset-0 isolate w-full h-[100svh] overflow-hidden overscroll-none flex flex-col text-[0.9rem] font-normal">
 
       {/* TOP */}
-      <header className="shrink-0 px-[3vw] pt-[0.5vh] pb-[1vh] flex items-start justify-between">
+      <header className="shrink-0 px-[2vw] pt-[0vh] pb-[1vh] flex items-start justify-between">
 
         <div className="relative z-50 pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
           <Title lang={lang} />
@@ -33,10 +46,21 @@ export default function MobileLayout({
       <main className="relative flex-1 min-h-0 overflow-hidden">
 
         {/* SIDEBAR */}
-        <div className="absolute top-[2vh] left-[3vw] z-[100] max-h-[42vh] overflow-y-auto pr-[2vw] leading-[0.95] pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
+        <div className="absolute top-0 left-0 z-[100] w-[82vw] max-h-[60vh] overflow-y-auto px-[2vw] pt-[2vh] pb-[6vh] pr-[8vw] leading-[0.95] pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
 
-          <Sidebar lang={lang} variant="mobile" />
+          <Sidebar
+            lang={lang}
+            variant="mobile"
+            onOpenBoard={() => setIsBoardOpen(true)}
+          />
 
+        </div>
+
+        <div className="absolute top-[2vh] right-[2vw] z-[110] max-w-[62vw] pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
+          <ExhibitionsNav
+            lang={lang}
+            variant="mobile"
+          />
         </div>
 
         {/* IMAGE / PAGE CONTENT */}
@@ -48,18 +72,23 @@ export default function MobileLayout({
 
       </main>
 
-      {/* FOOTER */}
-      <footer className="shrink-0 h-[14svh] px-[3vw] pt-[3vh] pb-[0.5vh] leading-[0.95] grid grid-cols-1 grid-rows-2">
+      {isHomePage && (
+        <footer className="shrink-0 h-[14svh] px-[2vw] pt-[2.4vh] pb-[0.5vh] leading-[1] grid grid-cols-1 grid-rows-[auto_1fr_auto]">
 
-        <div className="relative z-50 row-start-1 self-start justify-self-start max-w-[75vw] whitespace-pre-line pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
-          {bio}
-        </div>
+          <div className="relative z-50 row-start-1 w-[100vw] box-border self-start justify-self-start whitespace-pre-line pointer-events-auto [text-shadow:0_0_3px_#ffffff]">
+            {bio}
+          </div>
 
-        <div className="relative z-50 row-start-2 self-end justify-self-end whitespace-nowrap pointer-events-auto font-light [text-shadow:0_0_3px_#ffffff]">
-          contact: alswlleft@gmail.com
-        </div>
+          <div className="relative z-50 row-start-3 self-end justify-self-end whitespace-nowrap pointer-events-auto font-normal tracking-[0.02em] [text-shadow:0_0_3px_#ffffff]">
+            contact: jung0minji@gmail.com
+          </div>
 
-      </footer>
+        </footer>
+      )}
+
+      {isBoardOpen && (
+        <BoardCanvas onClose={() => setIsBoardOpen(false)} />
+      )}
 
     </div>
   );
