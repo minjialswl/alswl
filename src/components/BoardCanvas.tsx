@@ -9,26 +9,6 @@ type Props = {
   onClose?: () => void;
 };
 
-function getYoutubeEmbedSrc(src: string) {
-  if (src.includes("youtube.com/embed/")) {
-    return src;
-  }
-
-  const shortUrlMatch = src.match(/youtu\.be\/([^?]+)/);
-
-  if (shortUrlMatch) {
-    return `https://www.youtube.com/embed/${shortUrlMatch[1]}`;
-  }
-
-  const watchUrlMatch = src.match(/[?&]v=([^&]+)/);
-
-  if (watchUrlMatch) {
-    return `https://www.youtube.com/embed/${watchUrlMatch[1]}`;
-  }
-
-  return src;
-}
-
 export default function BoardCanvas({ onClose }: Props) {
   const [isMounted, setIsMounted] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -64,50 +44,21 @@ export default function BoardCanvas({ onClose }: Props) {
       <div className="fixed inset-0 bg-white/20 backdrop-blur-[3px]" />
 
       <div className="relative z-[1] grid grid-cols-3 items-center gap-[1vw] px-[5vw] py-[8vh] portrait:gap-[1.5vw] portrait:px-[3vw] portrait:py-[7vh]">
-        {boardItems.map((item, index) => {
-          if (item.type === "video") {
-            return (
-              <video
-                key={`${item.type}-${item.src}`}
-                src={assetPath(item.src)}
-                poster={item.poster ? assetPath(item.poster) : undefined}
-                className="h-auto w-full bg-white object-contain"
-                controls
-                playsInline
-                preload="metadata"
-              />
-            );
-          }
-
-          if (item.type === "youtube") {
-            return (
-              <iframe
-                key={`${item.type}-${item.src}`}
-                src={getYoutubeEmbedSrc(item.src)}
-                title={item.title}
-                className="aspect-video w-full border-0 bg-white"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            );
-          }
-
-          return (
-            <button
-              key={`${item.type}-${item.src}`}
-              type="button"
-              aria-label={`보드 이미지 ${index + 1} 크게 보기`}
-              className="w-full cursor-zoom-in border-0 bg-transparent p-0 transition-transform duration-200 hover:z-[80] hover:scale-[1.02]"
-              onClick={() => setSelectedImage(item.src)}
-            >
-              <img
-                src={assetPath(item.src)}
-                alt=""
-                className="h-auto w-full bg-white object-contain"
-              />
-            </button>
-          );
-        })}
+        {boardItems.map((item, index) => (
+          <button
+            key={item.src}
+            type="button"
+            aria-label={`보드 이미지 ${index + 1} 크게 보기`}
+            className="w-full cursor-zoom-in border-0 bg-transparent p-0 transition-transform duration-200 hover:z-[80] hover:scale-[1.02]"
+            onClick={() => setSelectedImage(item.src)}
+          >
+            <img
+              src={assetPath(item.src)}
+              alt=""
+              className="h-auto w-full bg-white object-contain"
+            />
+          </button>
+        ))}
       </div>
 
       <button

@@ -19,7 +19,6 @@ export default function ExhibitionsNav({
   const pathname = usePathname();
   const isMobile = variant === "mobile";
   const [isExhibitionsOpen, setIsExhibitionsOpen] = useState(false);
-  const exhibitionsLabel = lang === "ko" ? "exhibitions" : "exhibitions";
 
   useEffect(() => {
     setIsExhibitionsOpen(false);
@@ -70,7 +69,7 @@ export default function ExhibitionsNav({
           onToggle={(event) => setIsExhibitionsOpen(event.currentTarget.open)}
         >
           <summary className="block cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-            {exhibitionsLabel}
+            exhibitions
           </summary>
 
           {exhibitionsList}
@@ -78,7 +77,7 @@ export default function ExhibitionsNav({
       ) : (
         <>
           <div>
-            {exhibitionsLabel}
+            exhibitions
           </div>
 
           {exhibitionsList}

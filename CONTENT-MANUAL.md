@@ -67,7 +67,7 @@ src/data/works.ts
 
 - 다른 작업과 중복되지 않는 고유한 값이어야 합니다.
 - 영문, 숫자, `-` 사용을 권장합니다.
-- 상세 페이지 주소가 됩니다. 위 예시는 `/ko/new-work/`입니다.
+- 상세 페이지 주소가 됩니다. 위 예시는 `/ko/works/new-work/`입니다.
 
 ### 1-3. 이미지 캡션 추가하기
 
@@ -197,11 +197,11 @@ workSlugs: ["new-work", "another-work"],
 descriptionHref: "https://example.com",
 ```
 
-## 3. 보드 이미지 또는 영상 추가
+## 3. 보드 이미지 또는 GIF 추가
 
 ### 3-1. 이미지 넣기
 
-새 이미지나 영상 파일을 다음 폴더에 넣습니다.
+새 이미지나 GIF 파일을 다음 폴더에 넣습니다.
 
 ```text
 public/images/boardimg
@@ -211,7 +211,7 @@ public/images/boardimg
 
 ```text
 public/images/boardimg/022.jpg
-public/images/boardimg/board-video.mp4
+public/images/boardimg/023.gif
 ```
 
 ### 3-2. 보드 데이터에 경로 추가하기
@@ -226,41 +226,13 @@ src/data/board.ts
 
 ```ts
 export const boardItems = [
-  { type: "image", src: "/images/boardimg/01.jpeg" },
-  { type: "image", src: "/images/boardimg/022.jpg" },
+  { src: "/images/boardimg/01.jpeg" },
+  { src: "/images/boardimg/022.jpg" },
+  { src: "/images/boardimg/023.gif" },
 ];
 ```
 
-로컬 영상은 다음 형식으로 추가합니다. 호환성을 위해 H.264 방식의 `.mp4` 파일을 권장합니다.
-
-```ts
-{
-  type: "video",
-  src: "/images/boardimg/board-video.mp4",
-},
-```
-
-영상 재생 전에 보일 표지 이미지를 지정할 수도 있습니다.
-
-```ts
-{
-  type: "video",
-  src: "/images/boardimg/board-video.mp4",
-  poster: "/images/boardimg/board-video-poster.jpg",
-},
-```
-
-유튜브 영상은 파일을 넣지 않고 링크만 추가합니다.
-
-```ts
-{
-  type: "youtube",
-  src: "https://youtu.be/VIDEO_ID",
-  title: "보드 영상 제목",
-},
-```
-
-배열에 적힌 순서대로 보드의 3열 그리드에 표시됩니다. 파일만 폴더에 넣고 이 배열에 추가하지 않으면 화면에 표시되지 않습니다. GitHub는 큰 파일 업로드를 제한하므로 용량이 큰 영상은 유튜브 사용을 권장합니다.
+GIF도 이미지와 같은 방식으로 추가합니다. 배열에 적힌 순서대로 보드의 3열 그리드에 표시됩니다. 파일만 폴더에 넣고 이 배열에 추가하지 않으면 화면에 표시되지 않습니다. GIF는 용량이 커지기 쉬우므로 가능하면 10MB 이하로 줄이는 것을 권장합니다.
 
 ## 4. BIO 변경
 

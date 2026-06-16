@@ -33,8 +33,6 @@ export default function Sidebar({
   const [hoveredExhibitionSlug, setHoveredExhibitionSlug] = useState<
     string | null
   >(null);
-  const worksLabel = lang === "ko" ? "works" : "works";
-  const boardLabel = lang === "ko" ? "board" : "board";
   const isMobile = variant === "mobile";
   const currentExhibition = exhibitions.find((exhibition) =>
     pathname.includes(`/exhibitions/${exhibition.slug}`),
@@ -55,7 +53,7 @@ export default function Sidebar({
       {works.map((work) => (
         <Link
           key={work.slug}
-          href={`/${lang}/${work.slug}`}
+          href={`/${lang}/works/${work.slug}`}
           className={
             isMobile
               ? "hover:underline underline-offset-[0.12em]"
@@ -86,7 +84,7 @@ export default function Sidebar({
           onToggle={(event) => setIsWorksOpen(event.currentTarget.open)}
         >
           <summary className="block cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-            {worksLabel}
+            works
           </summary>
 
           {worksList}
@@ -94,7 +92,7 @@ export default function Sidebar({
       ) : (
         <>
           <div>
-            {worksLabel}
+            works
           </div>
 
           {worksList}
@@ -117,7 +115,7 @@ export default function Sidebar({
           }`}
           onClick={onOpenBoard}
         >
-          {boardLabel}
+          board
         </button>
       </div>
 

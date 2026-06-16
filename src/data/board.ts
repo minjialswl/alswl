@@ -1,43 +1,31 @@
-export type BoardItem =
-  | {
-      type: "image";
-      src: string;
-    }
-  | {
-      type: "video";
-      src: string;
-      poster?: string;
-    }
-  | {
-      type: "youtube";
-      src: string;
-      title: string;
-    };
+export type BoardItem = {
+  src: string;
+};
 
-// 새 보드 이미지와 영상은 public/images/boardimg에 넣고 아래에 추가합니다.
+// 새 보드 이미지와 GIF는 public/images/boardimg에 넣고 아래에 추가합니다.
 export const boardItems: BoardItem[] = [
-  { type: "image", src: "/images/boardimg/024.jpg" },
-  { type: "image", src: "/images/boardimg/023.jpg" },
-  { type: "image", src: "/images/boardimg/022.jpg" },
-  { type: "image", src: "/images/boardimg/021.jpeg" },
-  { type: "image", src: "/images/boardimg/020.jpeg" },
-  { type: "image", src: "/images/boardimg/019.jpg" },
-  { type: "image", src: "/images/boardimg/018.jpeg" },
-  { type: "image", src: "/images/boardimg/017.gif" },
-  { type: "image", src: "/images/boardimg/016.jpg" },
-  { type: "image", src: "/images/boardimg/015.jpeg" },
-  { type: "image", src: "/images/boardimg/014.jpeg" },
-  { type: "image", src: "/images/boardimg/013.jpeg" },
-  { type: "image", src: "/images/boardimg/012.jpg" },
-  { type: "image", src: "/images/boardimg/011.jpeg" },
-  { type: "image", src: "/images/boardimg/010.jpeg" },
-  { type: "image", src: "/images/boardimg/009.JPG" },
-  { type: "image", src: "/images/boardimg/008.jpg" },
-  { type: "image", src: "/images/boardimg/007.jpeg" },
-  { type: "image", src: "/images/boardimg/006.jpeg" },
-  { type: "image", src: "/images/boardimg/005.jpeg" },
-  { type: "image", src: "/images/boardimg/004.jpeg" },
-  { type: "image", src: "/images/boardimg/003.jpeg" },
-  { type: "image", src: "/images/boardimg/002.jpeg" },
-  { type: "image", src: "/images/boardimg/001.jpg" },
+  { src: "/images/boardimg/024.jpg" },
+  { src: "/images/boardimg/023.jpg" },
+  { src: "/images/boardimg/022.jpg" },
+  { src: "/images/boardimg/021.jpeg" },
+  { src: "/images/boardimg/020.jpeg" },
+  { src: "/images/boardimg/019.jpg" },
+  { src: "/images/boardimg/018.jpeg" },
+  { src: "/images/boardimg/017.gif" },
+  { src: "/images/boardimg/016.jpg" },
+  { src: "/images/boardimg/015.jpeg" },
+  { src: "/images/boardimg/014.jpeg" },
+  { src: "/images/boardimg/013.jpeg" },
+  { src: "/images/boardimg/012.jpg" },
+  { src: "/images/boardimg/011.jpeg" },
+  { src: "/images/boardimg/010.jpeg" },
+  { src: "/images/boardimg/009.JPG" },
+  { src: "/images/boardimg/008.jpg" },
+  { src: "/images/boardimg/007.jpeg" },
+  { src: "/images/boardimg/006.jpeg" },
+  { src: "/images/boardimg/005.jpeg" },
+  { src: "/images/boardimg/004.jpeg" },
+  { src: "/images/boardimg/003.jpeg" },
+  { src: "/images/boardimg/002.jpeg" },
+  { src: "/images/boardimg/001.jpg" },
 ];

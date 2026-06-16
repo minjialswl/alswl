@@ -50,6 +50,7 @@ export default function MainImage() {
             mr-[2vw]
             mb-[5vh]
             portrait:mr-[0vw]
+            portrait:translate-y-[5vh]
 
             object-contain
             block
@@ -67,7 +68,7 @@ export default function MainImage() {
             onClick={() => setIsStatementOpen(false)}
           >
             <img
-              src={assetPath("/main_statement.jpg")}
+              src={assetPath("/main-statement.jpg")}
               alt=""
               className="max-h-[90svh] max-w-[90vw] object-contain"
             />
