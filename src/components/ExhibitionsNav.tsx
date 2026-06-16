@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { exhibitions } from "@/data/exhibitions";
 
 type Props = {
@@ -14,8 +16,15 @@ export default function ExhibitionsNav({
   variant,
   onActiveChange,
 }: Props) {
+  const pathname = usePathname();
   const isMobile = variant === "mobile";
+  const [isExhibitionsOpen, setIsExhibitionsOpen] = useState(false);
   const exhibitionsLabel = lang === "ko" ? "exhibitions" : "exhibitions";
+
+  useEffect(() => {
+    setIsExhibitionsOpen(false);
+  }, [pathname]);
+
   const exhibitionsList = (
     <div className={`mt-[1vh] flex flex-col gap-[0.9vh] ${isMobile ? "border-r border-current pr-[0.5em]" : "pl-[0.5em]"}`}>
       {exhibitions.map((exhibition) => {
@@ -29,6 +38,7 @@ export default function ExhibitionsNav({
               key={exhibition.slug}
               href={href}
               className="text-right hover:underline underline-offset-[0.12em]"
+              onClick={() => setIsExhibitionsOpen(false)}
             >
               {title}
             </Link>
@@ -55,7 +65,10 @@ export default function ExhibitionsNav({
   return (
     <nav className={isMobile ? "text-right leading-[0.95]" : ""}>
       {isMobile ? (
-        <details>
+        <details
+          open={isExhibitionsOpen}
+          onToggle={(event) => setIsExhibitionsOpen(event.currentTarget.open)}
+        >
           <summary className="block cursor-pointer list-none [&::-webkit-details-marker]:hidden">
             {exhibitionsLabel}
           </summary>

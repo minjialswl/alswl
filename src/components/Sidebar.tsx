@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExhibitionsNav from "@/components/ExhibitionsNav";
 import { exhibitions } from "@/data/exhibitions";
 import { works } from "@/data/works";
@@ -29,6 +29,7 @@ export default function Sidebar({
   onOpenBoard,
 }: Props) {
   const pathname = usePathname();
+  const [isWorksOpen, setIsWorksOpen] = useState(false);
   const [hoveredExhibitionSlug, setHoveredExhibitionSlug] = useState<
     string | null
   >(null);
@@ -45,6 +46,10 @@ export default function Sidebar({
   );
   const visibleWorkSlugs = new Set<string>(activeExhibition?.workSlugs ?? []);
 
+  useEffect(() => {
+    setIsWorksOpen(false);
+  }, [pathname]);
+
   const worksList = (
     <div className={`mt-[1vh] flex flex-col ${isMobile ? "gap-[0.9vh] border-l border-current pl-[0.5em]" : "gap-[0.9vh] pl-[0.5em]"}`}>
       {works.map((work) => (
@@ -60,6 +65,11 @@ export default function Sidebar({
                     : "hover:text-black"
                 }`
           }
+          onClick={() => {
+            if (isMobile) {
+              setIsWorksOpen(false);
+            }
+          }}
         >
           {lang === "ko" ? renderEnglish(work.title.ko) : work.title.en}
         </Link>
@@ -71,7 +81,10 @@ export default function Sidebar({
     <nav className="leading-[0.95] pointer-events-auto">
 
       {isMobile ? (
-        <details>
+        <details
+          open={isWorksOpen}
+          onToggle={(event) => setIsWorksOpen(event.currentTarget.open)}
+        >
           <summary className="block cursor-pointer list-none [&::-webkit-details-marker]:hidden">
             {worksLabel}
           </summary>
